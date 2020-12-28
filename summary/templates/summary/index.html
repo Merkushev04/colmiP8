@@ -1,0 +1,401 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>Заработок с AppleID</title>
+	<link rel="icon" type="image/vnd.microsoft.icon" href="{% static "img/logo1.ico" %}">
+	<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" >
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" >
+	<link rel="stylesheet" href="{% static "css/animate.min.css" %}" >
+	<link rel="stylesheet" href="{% static "css/style.css" %}" >
+	<link rel="stylesheet" href="{% static "css/responsive.css" %}" >
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<script src="{% static "js/modernizr.js" %}"></script>
+
+	<!--[if lt IE 9]>
+<!--      <script src="{% static "js/html5shiv.js" %}"></script>-->
+<!--      <script src="{% static "js/respond.min.js" %}"></script>-->
+    <![endif]-->
+
+</head>
+<body>
+	<!-- ====================================================
+	header section -->
+	<header class="top-header" style="background: rgb(24, 23, 29);">
+		<div class="container">
+			<div class="row">
+				<!-- nav starts here -->
+				<div class="col-md-12">
+					<nav class="navbar navbar-default">
+						<div class="container-fluid nav-bar header_line">
+						    <div class="navbar-header">
+						      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						        <span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						      </button>
+<!--						      <a href="index.html">.<img src="{% static "img/logo.png" %}" alt="" class="img-responsive logo"></a>-->
+						    </div>
+						    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						      <ul class="nav navbar-nav navbar-right">
+						        <li><a href="#home">Начальная</a></li>
+						        <li><a href="#features">Описание</a></li>
+						        <li><a href="#about">Преимущества</a></li>
+						        <li><a href="#testimonials">Отзывы</a></li>
+						        <li><a href="#contact">Заявка</a></li>
+						      </ul>
+						    </div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header><!-- end of header section -->
+
+	<!-- banner section starts here -->
+	<section class="banner" id="home">
+		<div class="container ">
+			<div class="row">
+				<div class="col-xs-6 wow fadeInLeft animated banner-description">
+					<h3></h3>
+					<h1>Смарт-часы Colmi P8 </h1>
+					<p>Часы созданы для тех, кто следит за своим здоровьем и идет в ногу со временем.</p>
+
+					<a href="#contact" class="download-btn "><button class="features-btn">Хочу</button></a>
+				</div>
+				<div class="col-xs-6 banner-img wow fadeInRight animated">
+					<img class="img-responsive" src="{% static "img/verticle-phone.png" %}" alt="">
+				</div>
+			</div>
+		</div>
+	</section><!-- end of banner section -->
+
+	<section class="clock" id="">
+		<div class="container">
+			<div class="row">
+				<h1 class="countdown-title">До конца акции осталось:</h1>
+				<img class="sale-img" src="{% static "img/30.png" %}"  >
+				<div id="countdown" class="countdown">
+				  <div class="countdown-number">
+					<span class="days countdown-time"></span>
+					<span class="countdown-text">Дней</span>
+				  </div>
+				  <div class="countdown-number">
+					<span class="hours countdown-time"></span>
+					<span class="countdown-text">Часов</span>
+				  </div>
+				  <div class="countdown-number">
+					<span class="minutes countdown-time"></span>
+					<span class="countdown-text">Минут</span>
+				  </div>
+				  <div class="countdown-number">
+					<span class="seconds countdown-time"></span>
+					<span class="countdown-text">Секунд</span>
+				  </div>
+					<img class="img-responsive" src="{% static "img/799g.png" %}"  >
+				</div>
+			</div>
+		</div>
+	</section><!-- end of banner section -->
+
+
+	<script>
+		function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 13 * 13 * 23 * 37 * 1000); // for endless timer
+initializeClock('countdown', deadline);
+	</script>
+
+	<!-- feature sectiona -->
+	<section class="features text-center" id="features">
+		<div class="container">
+			<div class="row">
+				<h4>Описание</h4>
+				<h2>Смарт часы с измерением пульса и давления Colmi P8</h2>
+				<img class="img-responsive" src="{% static "img/daag.png" %}" alt="">
+				<div class="col-md-3 wow zoomIn animated">
+					<i class="fa fa-cog fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+					<h3>Корпус и ремешок:</h3>
+					<p>Корпус часов изготовлен из прочного цинкового сплава который защищен от воды и пыли по стандарту IP67 (IPX7), благодаря чему вы можете мыть руки, принимать душ и тренироваться.</p>
+					<p>Плавный переход от изогнутого стекла 2.5D к металлическому корпусу часов снижает толщину корпуса до 9 мм, что делает часы тонкими и стильным.</p>
+					<p>Ремешок из приятного на ощупь силикона.</p>
+				</div>
+				<div class="col-md-3 wow zoomIn animated">
+					<i class="fa fa-cog fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+					<h3>Дисплей:</h3>
+					<p>Стильный, большой квадратный сенсорный TFT экран, показывающий больше информации. Новые редактируемые модульные циферблаты, которые вам так нужны.</p>
+					<p>На 1.4-дюймовом квадратном экране с разрешением 240x240 пикселей, в паре с яркими циферблатами теперь можно разместить гораздо больше полезной информации, чем это было возможно на круглом дисплее. Кроме того, есть инновационный модульный циферблат, на который можно выводить такие данные, как: частота сердечных сокращений, календарь, погода, события. Вы можете наблюдать все эти данные на одном циферблате.</p>
+				</div>
+				<div class="col-md-3 wow zoomIn animated">
+					<i class="fa fa-cog fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+					<h3>Процессор:</h3>
+					<p>Часы работают на базе современного энергоэффективного процессора NRF52832. Который прекрасно справляется со всеми поставленными задачами. <br> Bluetooth: 4.2</p>
+				</div>
+				<div class="col-md-3 wow zoomIn animated">
+					<i class="fa fa-cog fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+					<h3>Аккумулятор:</h3>
+					<p>Заряда батареи емкостью 170 мАч хватит примерно на 6 дней работы Colmi P8 при активации стандартных функций, до 10 дней в режиме ожидания. Занимайтесь своими делами и не думайте о заряде аккумулятора!</p>
+					<p>Совместимость с Android и IOS.</p>
+					<p>Синхронизируя Colmi P8 со своим смартфоном, входящие звонки или новые сообщения на телефоне сразу отображаться на экране часов. События сопровождаются не только вибрацией, но и мерцанием индикатора в верхней части дисплея. Также, без проблем можно пользоваться часами как самостоятельным гаджетом, не совмещая его с телефоном.</p>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of features section -->
+	<hr>
+	<!-- details section -->
+<!--	<section class="details " id="about">-->
+<!--		<div class="container">-->
+	<section class="features text-center details" id="about">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-12 wow zoomIn animated">
+					<h4>Функции:</h4>
+					<h2>Основные преимущества Colmi P8</h2>
+					<img class="img-responsive" src="{% static "img/daag.png" %}" alt="">
+					<br>
+					<div class="col-md-5 col-xs-6 col-sm-6 wow slideInUp animated">
+						<img class="img-responsive details-phone" src="{% static "img/verticle-phone.png" %}" alt="">
+					</div>
+					<p>Прямо сейчас Вы можете получить супер гаджет по супер-цене.
+						<p id="sale-price" >ВСЕГО 799 грн</p>
+					<br>
+
+					<ul id="benefits">
+						<li>Защита от воды и пыли IP67</li>
+						<li>Оповещения о звонках / смс / соц сетях</li>
+						<li>Управление музыкальным плеером</li>
+						<li>Управление камерой, Шагомер, Погода</li>
+						<li>Измерение артериального давления</li>
+						<li>Определение уровня кислорода в крови</li>
+						<li>Отслеживание спортивных режимов</li>
+						<li>GPS (используется GPS модуль смартфона)</li>
+						<li>Пульсометр, Будильник, Напоминание</li>
+						<li>Съемный ремешок, Счетчик калорий</li>
+						<li>Датчик сердечного ритма</li>
+						<li>Анти-потеря, Мониторинг сна</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of details section -->
+
+	<!-- features details section -->
+	<section class="feature-detail text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 wow fadeInLeft animated">
+					<h4>Оплата и доставка:</h4>
+					<h2>Работаем по Украине и СНГ</h2>
+					<img src="{% static "img/daag.png" %}" alt="">
+					<p>
+						Кротчайшие сроки доставки, 2-3 дня в любой населенный пункт.<br><br>
+						Удобный почтовый сервис: Новая почта, Укр. почта, Justin.<br><br>
+						Оплата наложенным платежом либо через любой удобный для Вас банк.<br><br>
+						Дарим промокод на 100 грн для следующей покупки.<br><br>
+
+
+					</p>
+				</div>
+				<div class="col-xs-12 horizontal-phone wow fadeInRight animated">
+					<img class="img-responsive" id="delivery-image" src="{% static "img/backWhatch.png" %}" alt="phone">
+				</div>
+			</div>
+		</div>
+	</section><!-- end of features-detail section -->
+
+	<!-- pricing-slide section starts here -->
+	<section class="pricing-slide" id="testimonials">
+		<div class="container">
+			<div class="row">
+				<div class="pricing-slide-heading text-center">
+					<h4>Что говорят о нас?</h4>
+					<h2>Отзывы и комментарии</h2>
+					<img class="img=responsive" src="{% static "img/daag.png" %}" alt="">
+				</div>
+				<div class="the-pricing-slider">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					  <!-- Indicators -->
+					  <ol class="carousel-indicators">
+					    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					  </ol>
+					  <!-- Wrapper for slides -->
+					  <div class="carousel-inner" role="listbox">
+					    <div class="item active">
+						    <div class="col-md-6 col-xs-12 col-sm-6 wow zoomIn animated">
+								<p>Дуже сподобалася годинник. На коробці був QRкод для додатку DaFit. Додаток теж класний. Мова виставляється, яка в телефоні. Дисплеї можна змінити. Тиск, пульс, вміст кисню в крові можна виміряти як на годиннику, так і з додатку. Сон аналізує, сповіщення приходять зразу. Але, годинник після підключення до додатку потрібно перезавантажити. На руці зручні.</p>
+								<div class="person">
+						      		<img class="img-circle img-responsive" src="{% static "img/slider-img-1.jpg" %}" alt="">
+						      		<h6>Настя </h6>
+						      		<h5>Студент</h5>
+						      	</div>
+						    </div>
+						    <div class="col-md-6 col-xs-12 col-sm-6 wow zoomIn animated">
+								<p>Покупала мужу на День рождения. Теперь носит этот гаджет не снимая, в тренажерный зал, дома на кухне, даже в душ, отличная влагозащита. За месяц недостатков не выявлено. ЗАРЯД ДЕРЖИТ ПРОСТО БОМБА!! 3 НЕДЕЛИ!! Очень удобно, и было действительно неожиданно, что не нужно заряжать постоянно. Работают прекрасно. Доставили быстро. Рекомендую.</p>
+						      	<div class="person">
+						      		<img class="img-circle img-responsive" src="{% static "img/slider-img-5.jpg" %}" alt="">
+						      		<h6>Яна</h6>
+						      		<h5>Домохозяйка</h5>
+						      	</div>
+						    </div>
+
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- end of pricing-slide section -->
+
+
+
+	<!-- contact section -->
+	<section class="contact text-center" id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="contact-heading">
+					<h4>форма доставки</h4>
+					<h2>Заявка на покупку часов Colmi P8 за 799 грн</h2>
+					<img class="img-responsive" src="{% static "img/daag.png" %}" alt="">
+
+
+
+					<article class="contact-form">
+						<div class="col-md-10 col-md-offset-1 contact-form-left" >
+							<form action="." method="post" class="message" >{% csrf_token %}
+								{{ form.as_table }}
+								<br>
+								<input class='form-btn' type="submit" value="Отправить" id="blue_btn" onclick="myFunction();">
+							</form>
+						</div>
+					</article>
+				</div>
+
+				<script>
+				function myFunction(){
+					alert("Благодарим за заполнение зявки на покупку ColmiP8. \n \nВ ближайшее время с Вами свяжется менеджер для подтверждения заказа." );
+				};
+				</script>
+
+
+
+<!--				<div class="col-md-2 col-md-offset-1 col-xs-4 col-sm-4">-->
+<!--					<i class="fa fa-phone"></i>-->
+<!--					<p>Телефон: 38 (093) 322-4710</p>-->
+<!--					<p>Телеграмм: @work_roman</p>-->
+<!--				</div>-->
+<!--				<div class="col-md-2 col-md-offset-2 col-xs-4 col-sm-4">-->
+<!--					<i class="fa fa-map-marker"></i>-->
+<!--					<p>14000 г. Чернигов  </p>-->
+<!--					<p>ул. 77-й Гвардейской Дивизии,</p>-->
+<!--					<p>д. 1В</p>-->
+<!--				</div>-->
+<!--				<div class="col-md-2 col-md-offset-2 col-xs-4 col-sm-4 clearfix">-->
+<!--					<i class="fa fa-envelope-o"></i>-->
+<!--					<p>streletskiy<br>roman@gmail.com</p>-->
+<!--				</div>-->
+
+			</div>
+		</div>
+	</section><!-- end of contact section -->
+
+<!--		<section class="contact text-center" id="contact">-->
+<!--		<div class="container">-->
+<!--			<div class="row">-->
+
+
+<!--					<div class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12">-->
+<!--					<article class="contact-form">-->
+<!--						<div class="col-md-10 col-md-offset-1 contact-form-left" >-->
+<!--							<form action="." method="post" class="message">{% csrf_token %}-->
+<!--								{{ form.as_table }}-->
+<!--								<br>-->
+<!--								<input class='form-btn' type="submit" value="Отправить">-->
+<!--							</form>-->
+<!--						</div>-->
+<!--					</article>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</section>&lt;!&ndash; end of contact section &ndash;&gt;-->
+
+	<!-- footer starts here -->
+	<footer class="footer text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="icons">
+						<a href="#"><i class="fa fa-behance"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
+					</div>
+					<p>All Rights Reserved | Design by Busprix</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- script tags
+	============================================================= -->
+	<script src="{% static "js/jquery-2.1.1.js" %}"></script>
+	<script src="{% static "js/smoothscroll.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+	<script src="{% static "js/custom.js" %}"></script>
+	<script src="{% static "js/wow.js" %}"></script>
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="{% static "js/gmaps.js" %}"></script>
+	<script>
+	    var map = new GMaps({
+	      el: '#map',
+	      lat: -12.043333,
+	      lng: -77.028333
+	    });
+	</script>
+</body>
+</html>
